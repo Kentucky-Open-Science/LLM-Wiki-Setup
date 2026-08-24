@@ -19,7 +19,7 @@ affected instruction files.
 3. Guardrails: shared or sensitive ⇒ walk the cluster-guardrails interview
    questions; personal ⇒ at minimum "what on this machine is not
    expendable".
-4. Page: `wiki/entity-<name>.md` from `templates/machine-page.md` — facts
+4. Page: `wiki/machine-<name>.md` from `templates/machine-page.md` — facts
    verified or conv-tagged, never invented. Link sibling machines
    (division of labor) and the projects that will run here.
 5. Ripple: device table in `config/global.md` → regenerate → redeploy.

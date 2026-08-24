@@ -7,7 +7,7 @@ created: 2026-04-02
 updated: 2026-04-02
 status: stable
 sources: ["verified:2026-04-02"]
-related: ["[[service-driftwatch-api]]", "[[entity-harbor]]"]
+related: ["[[service-driftwatch-api]]", "[[machine-harbor]]"]
 conflicts: []
 ---
 # Driftwatch deploy
@@ -16,7 +16,7 @@ conflicts: []
 - A tagged release exists on the private remote and tests passed locally. — verified:2026-04-02
 
 ## Steps
-1. `ssh harbor` ([[entity-harbor]]).
+1. `ssh harbor` ([[machine-harbor]]).
 2. `cd /srv/driftwatch && git fetch --tags && git checkout <tag>`
 3. `.venv/bin/pip install -e . --quiet`
 4. `systemctl --user restart driftwatch.service`

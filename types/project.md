@@ -26,5 +26,5 @@ effort the user describes is a candidate page.)
 - `project-<repo-or-effort-slug>.md`, e.g. `project-driftwatch.md`.
 
 ## Typical relations
-- Links out to `entity-` (people, machines), `dataset-`, `service-`,
+- Links out to `entity-` (people), `machine-` (hosts), `dataset-`, `service-`,
   `manuscript-`, `concept-`; linked from `experiment-` and `decision-` pages.

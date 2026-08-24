@@ -33,6 +33,12 @@ with approval.**
 - Stale drafts: `status: draft` pages that have waited long enough to
   re-ask the user about.
 
+**A lint signature is grounds to look, never grounds to delete.** Before
+proposing removal, re-typing, or archival of any page — including one that
+trips several checks at once (no frontmatter + orphan + unindexed is also
+the signature of a substantive file that predates the schema) — open it
+and read it. The proposal must cite what the page actually contains.
+
 ## 3. Report
 
 One table: `Finding | Where | Severity | Proposed fix`. Group: mechanical /

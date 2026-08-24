@@ -78,7 +78,8 @@ Otherwise, per `modules/machines.md`:
 - Shared clusters trigger `modules/cluster-guardrails.md`: account/allocation
   discipline, read-before-write defaults, PHI/secure-box handling if it
   applies.
-- Each machine becomes an `entity-` page (`templates/machine-page.md`) — the
+- Each machine becomes a `machine-` page (`templates/machine-page.md`,
+  type: `types/machine.md`) — the
   guardrails section is the point, not the hardware inventory.
 
 ## Wave 6 — Policies

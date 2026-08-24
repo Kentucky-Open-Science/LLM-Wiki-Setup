@@ -10,7 +10,14 @@ Sources are wiki-relative; targets are absolute (~ allowed). The source is
 canonical: `deploy` copies source -> targets, `check` reports drift without
 writing (exit 1 if any), `diff` shows unified diffs. A drifted target
 usually means a hand-edit worth folding back into the source — see
-flows/tune.md. Stdlib only; Windows/macOS/Linux.
+flows/tune.md.
+
+Symlinked targets are a supported mode: a target that already resolves to
+its source (symlink or hardlink) is reported `ok (linked)` and never
+copied over — POSIX setups that deploy by symlink coexist with this tool.
+Copy mode is the cross-platform path: Windows symlinks need Developer
+Mode/admin, so on Windows prefer plain copies. Stdlib only;
+Windows/macOS/Linux.
 
 Usage:
   python3 deploy.py --wiki PATH {deploy|check|diff}
@@ -46,6 +53,10 @@ def main() -> int:
         if not src.exists():
             print(f"MISSING SOURCE: {src}", file=sys.stderr)
             drift += 1
+            continue
+        if dst.exists() and src.samefile(dst):
+            # symlink (or hardlink) to the source: identical by construction.
+            print(f"ok (linked) {dst}")
             continue
         s = src.read_text(encoding="utf-8")
         d = dst.read_text(encoding="utf-8") if dst.exists() else None

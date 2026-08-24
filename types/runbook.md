@@ -26,5 +26,5 @@
 - `runbook-<slug>.md`, e.g. `runbook-driftwatch-deploy.md`.
 
 ## Typical relations
-- Operates a `service-`/`pipeline-`/`entity-` machine; updated by
+- Operates a `service-`/`pipeline-`/`machine-` target; updated by
   `incident-` lessons.

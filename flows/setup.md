@@ -13,6 +13,10 @@ deploy targets.** Nothing is created before the plan is approved (step 6).
 - If `.wiki-path` exists and points at a valid wiki: a setup already exists
   — summarize it from `<wiki>/setup/` and offer **tune** instead. Continue
   with setup only if the user explicitly wants a second, separate system.
+- If the scan (step 2) finds an existing wiki or instruction stack with no
+  recorded baseline: route to **`flows/adopt.md`** — record what exists
+  first, then tune it. Step 4 below is for the narrower case of generating
+  fresh files that must absorb existing ones.
 
 ## 2. Scan (read-only, disclosed)
 
@@ -68,10 +72,12 @@ stage under the OS temp dir and move later):
 4. **Per-repo files** (P6, per the seed plan): generate each repo's
    `CLAUDE.md` + `AGENTS.md` from `templates/repo-instructions.md` — but
    hold them in staging until deploy.
-5. **State** in `setup/`: `answers.md` (every interview answer + policy
-   choice with its one-line reason), `decisions.md` (append-only; first
-   entry documents this setup), `manifest.json` (see below),
-   `hub-version.txt` (hub commit hash + date).
+5. **State** in `setup/`: `answers.md` — every interview answer + policy
+   choice with its one-line reason, each tagged with how it was obtained
+   (`stated:` the user said it · `obs:` observed mechanically · `doc:` read
+   from existing docs · `inf:` inferred, to re-confirm); `decisions.md`
+   (append-only; first entry documents this setup); `manifest.json` (see
+   below); `hub-version.txt` (hub commit hash + date).
 6. **Skills** (P7): prepare command files from `skills/` with
    `{{HUB_PATH}}`/`{{WIKI_PATH}}` substituted.
 

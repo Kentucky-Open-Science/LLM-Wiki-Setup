@@ -29,5 +29,5 @@
 - `dataset-<name-slug>.md`, e.g. `dataset-buoy-2019-2024.md`.
 
 ## Typical relations
-- Consumed by `experiment-`/`pipeline-`/`model-` pages; lives on `entity-`
-  machines; produced by `project-` code.
+- Consumed by `experiment-`/`pipeline-`/`model-` pages; lives on `machine-`
+  pages' hosts; produced by `project-` code.

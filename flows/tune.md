@@ -7,11 +7,15 @@ from recorded state and touches only what needs to change.
 
 ## 1. Load state
 
-- Read `.wiki-path` → wiki. Missing? Ask for the wiki location, validate
-  (`setup/` present), recreate the pointer.
+- Read `.wiki-path` → wiki. Missing? Ask for the wiki location and
+  recreate the pointer.
+- **Wiki present but `setup/` absent (or incomplete): stop — run
+  `flows/adopt.md` first.** Tune requires a recorded baseline; adoption
+  reconstructs one from a working setup without changing it.
 - Read `setup/answers.md`, `setup/decisions.md`, `setup/manifest.json`,
   `setup/hub-version.txt`, and the wiki schema. This is the baseline — do
-  not re-ask what it answers.
+  not re-ask what it answers. Honor the answer tags: `stated:`/`obs:` are
+  trusted; `inf:` answers are re-confirmed when a change touches them.
 
 ## 2. Check the two drifts
 
@@ -38,7 +42,9 @@ user's world may have shifted — new repos, new machines, new activities.
 - Map each piece of feedback to the answer/policy it revises.
 - **Schema evolution**: propose additions from new evidence (lean, as in
   Wave 4), retirements for zero-page types (`audit` data helps), splits for
-  strained ones. Retiring never deletes pages — re-type or annotate them.
+  strained ones. Retiring never deletes pages — re-type or annotate
+  them, and only after reading them (the audit rule: a lint signature is
+  grounds to look, never grounds to delete).
 - Present a delta plan: files to regenerate, diffs against current
   generated files, repos touched, anything de-installed. Approval gate,
   exactly as setup step 6.

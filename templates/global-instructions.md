@@ -43,13 +43,13 @@ wiki (`entity-` pages); project facts live in each repo's instruction file.
 |---|---|---|
 {{DEVICE_TABLE}}
 <!-- generator: one row per machine from the interview; keep each cell short
-     and put depth in the machine's entity- page — link it. Note which
+     and put depth in the machine- page — link it. Note which
      machines host agent sessions and which are reached over SSH; mark
      laptops that are "often asleep — unreachable is normal, never an
      error" where that applies. -->
 
-Full connection details, guardrails, and per-device gotchas: the `entity-`
-pages. Consult the wiki before asking {{USER_NAME}}.
+Full connection details, guardrails, and per-device gotchas: the
+`machine-` pages. Consult the wiki before asking {{USER_NAME}}.
 <!-- END if:module-machines -->
 
 <!-- BEGIN if:P1-sole-attribution -->

@@ -30,4 +30,4 @@
 
 ## Typical relations
 - Evidences `model-`/`concept-`/`decision-` claims (cite as
-  `exp:[[experiment-x]]`); consumes `dataset-`; ran on `entity-` machine.
+  `exp:[[experiment-x]]`); consumes `dataset-`; ran on `machine-`.

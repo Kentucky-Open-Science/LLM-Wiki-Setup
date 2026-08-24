@@ -1,8 +1,8 @@
 ---
-type: entity
+type: machine
 title: harbor
 aliases: [harbor-vps]
-tags: [entity, infrastructure, workstation]
+tags: [machine, infrastructure, workstation]
 created: 2026-02-11
 updated: 2026-04-02
 status: stable

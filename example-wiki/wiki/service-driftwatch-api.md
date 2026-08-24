@@ -7,7 +7,7 @@ created: 2026-04-02
 updated: 2026-04-02
 status: stable
 sources: ["verified:2026-04-02", "conv:2026-04-02"]
-related: ["[[project-driftwatch]]", "[[entity-harbor]]", "[[runbook-driftwatch-deploy]]"]
+related: ["[[project-driftwatch]]", "[[machine-harbor]]", "[[runbook-driftwatch-deploy]]"]
 conflicts: []
 ---
 # Driftwatch API
@@ -17,7 +17,7 @@ conflicts: []
   members; nightly ingest task appends to the parquet store and rescores. — verified:2026-04-02
 
 ## Runs on
-- [[entity-harbor]], `/srv/driftwatch`, systemd **user** service
+- [[machine-harbor]], `/srv/driftwatch`, systemd **user** service
   `driftwatch.service` (see the lingering gotcha on the machine page). — verified:2026-04-02
 
 ## Deploy

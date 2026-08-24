@@ -19,7 +19,7 @@ conflicts: []
 ## Setup
 - Train 2019–2022, holdout 2023 from [[dataset-buoy-2019-2024]]; labels =
   Priya's storm-log incident weeks. `python experiments/2026-03-baseline/run.py
-  --contamination 0.02`; ran on [[entity-harbor]] (CPU, ~9 min). — file:~/work/driftwatch/experiments/2026-03-baseline/results.json
+  --contamination 0.02`; ran on [[machine-harbor]] (CPU, ~9 min). — file:~/work/driftwatch/experiments/2026-03-baseline/results.json
 
 ## Results
 

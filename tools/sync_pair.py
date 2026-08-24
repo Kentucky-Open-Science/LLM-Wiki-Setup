@@ -30,6 +30,15 @@ def main() -> int:
         if not c.exists() and not a.exists():
             print(f"{d}: neither CLAUDE.md nor AGENTS.md exists — skipped")
             continue
+        if c.exists() != a.exists() and not args.source:
+            # A lone file is a valid single-harness location (e.g. ~/.codex
+            # holds only AGENTS.md). Pass --from to create the twin.
+            lone = c if c.exists() else a
+            print(f"{d}: only {lone.name} present — ok (single-harness)")
+            continue
+        if c.exists() and a.exists() and c.samefile(a):
+            print(f"{d}: in sync (linked)")
+            continue
         if c.exists() and a.exists() and c.read_bytes() == a.read_bytes():
             print(f"{d}: in sync")
             continue

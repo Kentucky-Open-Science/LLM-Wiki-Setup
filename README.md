@@ -115,6 +115,7 @@ audit, or extend) this user's agentic work system. Proceed as follows:**
    `<wiki>/setup/` first. Absent ⇒ first run.
 3. Route the request:
    - first-time setup, "set me up" → **`flows/setup.md`**
+   - an existing setup with no recorded baseline → **`flows/adopt.md`**
    - refine an existing setup → **`flows/tune.md`**
    - health check → **`flows/audit.md`**
    - new machine, repo, or collaborator → **`flows/add.md`**

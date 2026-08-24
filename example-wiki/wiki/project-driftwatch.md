@@ -7,7 +7,7 @@ created: 2026-02-11
 updated: 2026-04-02
 status: stable
 sources: ["file:~/work/driftwatch/README.md", "conv:2026-02-11", "conv:2026-04-02"]
-related: ["[[service-driftwatch-api]]", "[[dataset-buoy-2019-2024]]", "[[entity-harbor]]"]
+related: ["[[service-driftwatch-api]]", "[[dataset-buoy-2019-2024]]", "[[machine-harbor]]"]
 conflicts: []
 ---
 # Driftwatch
@@ -26,7 +26,7 @@ score anomalies, serve alerts to co-op members. — conv:2026-02-11
 
 ## Location
 - Local: `~/work/driftwatch` (solo repo, private remote). — verified:2026-02-11
-- Deployed on [[entity-harbor]] at `/srv/driftwatch`. — verified:2026-04-02
+- Deployed on [[machine-harbor]] at `/srv/driftwatch`. — verified:2026-04-02
 
 ## Stack
 - Python 3.12, FastAPI, scikit-learn, SQLite (per [[decision-sqlite-over-postgres]]), parquet via pyarrow. — file:~/work/driftwatch/pyproject.toml
@@ -36,4 +36,4 @@ score anomalies, serve alerts to co-op members. — conv:2026-02-11
 - Scoring approach validated by [[experiment-anomaly-baseline-2026-03]].
 
 ## Facts
-- Weekly digest email goes out Mondays 07:00 UTC via cron on [[entity-harbor]]. — verified:2026-04-02
+- Weekly digest email goes out Mondays 07:00 UTC via cron on [[machine-harbor]]. — verified:2026-04-02

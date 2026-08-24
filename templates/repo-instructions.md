@@ -13,7 +13,7 @@ and history before asking.
 ## Environment
 <!-- generator: only what's true and needed: how to set up/enter the env,
      the run entry points, where it deploys or mounts remotely (link the
-     machine's entity- page), which machine work should run on. -->
+     machine's machine- page), which machine work should run on. -->
 - {{ENV_FACTS}}
 
 ## Verify
@@ -26,5 +26,5 @@ and history before asking.
      already covers general behavior — do not repeat it). Examples: which
      dirs are generated/vendored (don't hand-edit), collaborative status
      ("history has other authors — every push needs approval" per P4),
-     remote-machine cautions with entity- page links. -->
+     remote-machine cautions with machine- page links. -->
 - {{REPO_RULES}}

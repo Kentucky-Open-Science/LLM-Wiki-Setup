@@ -35,7 +35,8 @@ disconnects?
 
 ## Every machine is a wiki page
 
-Each machine gets `wiki/entity-<name>.md` from `templates/machine-page.md`.
+Each machine gets `wiki/machine-<name>.md` from `templates/machine-page.md`
+(type definition: `types/machine.md`).
 Infrastructure is knowledge, not configuration: the quirks, the guardrails,
 the division of labor all live on the page with provenance, so they are
 learned once and cited forever. Shared clusters and sensitive-data boxes

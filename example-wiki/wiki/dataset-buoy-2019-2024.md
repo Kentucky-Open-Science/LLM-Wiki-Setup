@@ -17,7 +17,7 @@ conflicts: []
   height, wind; 2.1 GB parquet, 1 file per station-year. — verified:2026-03-14
 
 ## Location & Access
-- [[entity-harbor]]: `/data/buoy/` (canonical). — verified:2026-03-14
+- [[machine-harbor]]: `/data/buoy/` (canonical). — verified:2026-03-14
 - Public NOAA NDBC source; no license constraints. — file:https://www.ndbc.noaa.gov/
 - Not in any git repo (data policy); refreshed by the ingest task.
 

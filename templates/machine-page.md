@@ -1,14 +1,15 @@
-<!-- generator: becomes wiki/entity-<machine-slug>.md — used by setup Wave 5
+<!-- generator: becomes wiki/machine-<slug>.md (type definition:
+     types/machine.md) — used by setup Wave 5
      and flows/add.md. The Guardrails section and the gotcha-Facts are the
      point; hardware is context. Fill only what is verified (run the
      commands, or tag conv:) — never invent specs. For shared clusters and
      sensitive-data boxes, pull the relevant guardrail text from
      modules/cluster-guardrails.md. -->
 ---
-type: entity
+type: machine
 title: {{MACHINE_NAME}}
 aliases: [{{ALIASES}}]
-tags: [entity, infrastructure, {{KIND}}]   # kind: laptop | workstation | gpu-node | cluster | secure-box
+tags: [machine, infrastructure, {{KIND}}]   # kind: laptop | workstation | gpu-node | cluster | secure-box
 created: {{DATE}}
 updated: {{DATE}}
 status: stable

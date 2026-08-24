@@ -21,6 +21,6 @@ repos. Deployment is by copy via `tools/deploy.py` and the manifest — see
 | `global-instructions.md` | `config/global.md` | `~/.claude/CLAUDE.md`, `~/.codex/AGENTS.md` |
 | `working-guidelines.md` | `config/working-guidelines.md` | `<work-dir>/CLAUDE.md` + `AGENTS.md` (Claude Code / free-claude-code load the work-dir layer; Codex does not — fold the content into the global file for Codex-only users) |
 | `repo-instructions.md` | `<repo>/CLAUDE.md` + `AGENTS.md` | committed in that repo (policy P6) |
-| `machine-page.md` | `wiki/entity-<machine>.md` | in place |
+| `machine-page.md` | `wiki/machine-<slug>.md` | in place |
 | `gitignore-block.txt` | appended to repo `.gitignore`s | per repo (policy P2) |
 | `hooks/pre-commit` | `.git/hooks/pre-commit` | per repo (policy P2) |

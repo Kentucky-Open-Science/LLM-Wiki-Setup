@@ -21,7 +21,7 @@ conflicts: []
 
 ## Alternatives
 - Postgres: rejected — an extra service to run and back up on
-  [[entity-harbor]] for zero current benefit. — conv:2026-03-20
+  [[machine-harbor]] for zero current benefit. — conv:2026-03-20
 - Parquet-only (no DB): rejected — alert acknowledgment needs row updates. — conv:2026-03-20
 
 ## Consequences

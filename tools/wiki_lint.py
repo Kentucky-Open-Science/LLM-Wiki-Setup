@@ -3,13 +3,18 @@
 wired to hooks, CI, or schedules.
 
 Checks: frontmatter validity, unresolved [[wikilinks]], orphan pages,
-index.md coverage, provenance tags on factual bullets, stale drafts,
-log.md entry format. Reports; changes nothing. Exit 0 always, unless
---strict (then 1 if any findings). Stdlib only; Windows/macOS/Linux.
+index.md coverage and size budget (entries are pointers, not summaries),
+provenance tags on factual bullets, stale drafts, log.md entry format.
+Text inside code fences and inline backticks is ignored everywhere — a
+documented `[[link]]` is not a link. Reports; changes nothing. Exit 0
+always, unless --strict (then 1 if any findings).
+Stdlib only; Windows/macOS/Linux.
 
 Usage:
   python3 wiki_lint.py WIKI_PATH [--provenance {facts,all,off}]
-                                 [--stale-days N] [--strict]
+                                 [--stale-days N] [--log-since YYYY-MM-DD]
+                                 [--index-budget CHARS] [--index-entry-max CHARS]
+                                 [--strict]
 """
 import argparse
 import re
@@ -23,6 +28,14 @@ LINK_RE = re.compile(r"\[\[([^\]|#]+)(?:#[^\]|]*)?(?:\|[^\]]*)?\]\]")
 PROV_RE = re.compile(r"(—|--)\s*(conv:|file:|verified:|exp:|\[\[)")
 LOG_RE = re.compile(r"^## \[\d{4}-\d{2}-\d{2}\] \S+ \| .+")
 DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}")
+FENCE_RE = re.compile(r"^(```|~~~).*?^\1\s*$", re.M | re.S)
+INLINE_CODE_RE = re.compile(r"`[^`\n]*`")
+
+
+def strip_code(text):
+    """Remove fenced blocks and inline code spans — their contents are
+    documentation, not links or claims."""
+    return INLINE_CODE_RE.sub("", FENCE_RE.sub("", text or ""))
 # Sections whose bullets are treated as factual claims in "facts" mode.
 FACTY = {"facts", "findings", "results", "key facts", "lessons", "gotchas"}
 
@@ -57,6 +70,14 @@ def main() -> int:
     ap.add_argument("--provenance", choices=["facts", "all", "off"], default="facts",
                     help="which bullets must carry provenance tags (default: facts sections)")
     ap.add_argument("--stale-days", type=int, default=30)
+    ap.add_argument("--log-since", metavar="YYYY-MM-DD", default=None,
+                    help="only check log.md entries dated on/after this "
+                         "(adopted wikis: set to the adoption date)")
+    ap.add_argument("--index-budget", type=int, default=30000,
+                    help="warn when index.md exceeds this many chars (default 30000)")
+    ap.add_argument("--index-entry-max", type=int, default=200,
+                    help="warn when an index entry line exceeds this (default 200; "
+                         "the format targets ~165)")
     ap.add_argument("--strict", action="store_true")
     args = ap.parse_args()
     wiki = args.wiki.expanduser().resolve()
@@ -81,7 +102,18 @@ def main() -> int:
                 resolve.setdefault(a.lower(), p.stem)
 
     index_text = (wiki / "index.md").read_text(encoding="utf-8") if (wiki / "index.md").exists() else ""
-    index_links = {strip_link(m) for m in LINK_RE.findall(index_text)}
+    index_links = {strip_link(m) for m in LINK_RE.findall(strip_code(index_text))}
+
+    # index budget: entries are pointers, not summaries
+    if index_text:
+        if len(index_text) > args.index_budget:
+            add("index-size", f"index.md: {len(index_text)} chars (budget "
+                f"{args.index_budget}) — it is loaded every session; entries "
+                f"drifting from pointers into summaries is the usual cause")
+        for i, line in enumerate(index_text.splitlines(), 1):
+            if line.lstrip().startswith("- ") and len(line) > args.index_entry_max:
+                add("index-size", f"index.md:{i}: entry is {len(line)} chars "
+                    f"(max {args.index_entry_max}) — move detail into the page")
 
     inbound = {stem: 0 for stem in pages}
     today = date.today()
@@ -106,8 +138,9 @@ def main() -> int:
                     y, mo, d = map(int, m.group(0).split("-"))
                     if (today - date(y, mo, d)) > timedelta(days=args.stale_days):
                         add("stale-draft", f"{rel}: draft untouched since {m.group(0)}")
-        # links
-        for target in LINK_RE.findall(body or ""):
+        # links (code-stripped: documented [[links]] don't count)
+        scan_body = strip_code(body)
+        for target in LINK_RE.findall(scan_body):
             t = strip_link(target)
             if t in resolve:
                 if resolve[t] != stem:
@@ -125,7 +158,7 @@ def main() -> int:
                     if applies and not PROV_RE.search(text) and not LINK_RE.search(text):
                         add("provenance", f"{rel}: untagged bullet: {text.strip()[:70]}")
                 bullet = None
-            for line in (body or "").splitlines():
+            for line in scan_body.splitlines():
                 h = re.match(r"^#{2,}\s+(.*)$", line)
                 if h:
                     flush()
@@ -155,6 +188,10 @@ def main() -> int:
     if log.exists():
         for i, line in enumerate(log.read_text(encoding="utf-8").splitlines(), 1):
             if line.startswith("## ") and not LOG_RE.match(line):
+                if args.log_since:
+                    m = DATE_RE.search(line)
+                    if m and m.group(0) < args.log_since:
+                        continue  # legacy entry, predates the adopted format
                 add("log", f"log.md:{i}: entry doesn't match `## [YYYY-MM-DD] kind | text`")
 
     # report

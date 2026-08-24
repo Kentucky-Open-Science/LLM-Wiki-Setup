@@ -27,5 +27,5 @@
 - `pipeline-<slug>.md`, e.g. `pipeline-buoy-nightly-ingest.md`.
 
 ## Typical relations
-- Reads `api-`/`dataset-`/`service-`; writes `dataset-`; runs on `entity-`;
+- Reads `api-`/`dataset-`/`service-`; writes `dataset-`; runs on `machine-`;
   breakage becomes `incident-`.

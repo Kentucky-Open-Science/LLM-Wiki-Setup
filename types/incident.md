@@ -28,5 +28,5 @@
 - `incident-<yyyy-mm>-<slug>.md`, e.g. `incident-2026-01-disk-full.md`.
 
 ## Typical relations
-- Belongs to a `service-`/`pipeline-`/`entity-` machine; produces
+- Belongs to a `service-`/`pipeline-`/`machine-` page; produces
   `decision-`/`runbook-` updates; cited by machine-page guardrails.

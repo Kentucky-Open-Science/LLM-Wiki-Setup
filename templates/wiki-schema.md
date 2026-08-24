@@ -110,7 +110,7 @@ conflicts: []        # pages this contradicts, if any
 ## Naming & linking
 
 - Slugs are kebab-case and type-prefixed: `project-driftwatch.md`,
-  `entity-harbor.md`. Use frontmatter `aliases` so abbreviations resolve.
+  `machine-harbor.md`. Use frontmatter `aliases` so abbreviations resolve.
 - Use `[[wikilinks]]` everywhere, not markdown links. Link liberally — a
   `[[name]]` that doesn't resolve yet marks a page worth creating (lint
   catches it). Link an entity/concept on first mention in a page.
@@ -153,7 +153,10 @@ procedure is the hub's `flows/audit.md`.
 
 Content catalog grouped by type, one line per page:
 `- [[project-driftwatch]] — <hook> · N sources`. Update on every
-ingest/capture. Read it first when querying.
+ingest/capture. Read it first when querying. **Entries are pointers, not
+summaries** — one line, ≤ ~165 characters; when an entry wants more, the
+detail belongs in the page. (The index loads every session; lint warns on
+oversized entries and a bloated total.)
 
 ## log.md
 

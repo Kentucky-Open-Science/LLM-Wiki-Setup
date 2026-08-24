@@ -13,7 +13,7 @@
 
 ## Required sections
 - `## What it does` — one paragraph, with the public endpoint(s)
-- `## Runs on` — host (`entity-` link), runtime, how it starts and restarts
+- `## Runs on` — host (`machine-` link), runtime, how it starts and restarts
 - `## Deploy` — how a change ships (link the `runbook-` if one exists)
 - `## Dependencies` — datastores, third-party APIs, other services (links)
 - `## Health` — how to check it (URLs, commands, dashboards); known failure
@@ -28,5 +28,5 @@
 - `service-<name-slug>.md`, e.g. `service-driftwatch-api.md`.
 
 ## Typical relations
-- Built by a `project-`; runs on `entity-`; operated via `runbook-`;
+- Built by a `project-`; runs on `machine-`; operated via `runbook-`;
   failures become `incident-` pages.

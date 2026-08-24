@@ -27,7 +27,7 @@ system. Any agent operating in this directory is bound by this contract.
 | Path | What it is |
 |---|---|
 | `.wiki-path` | Untracked one-line file: absolute path to the user's wiki repo. Present ⇒ a setup already exists — read `<wiki>/setup/` before doing anything. Absent ⇒ first run (or the pointer was lost; ask, then recreate it). |
-| `flows/` | The four canonical procedures: `setup.md`, `tune.md`, `audit.md`, `add.md`. Flows are the source of truth; skills and slash commands are thin pointers to them. |
+| `flows/` | The five canonical procedures: `setup.md`, `adopt.md`, `tune.md`, `audit.md`, `add.md`. Flows are the source of truth; skills and slash commands are thin pointers to them. |
 | `interview/` | How to scan (read-only, disclosed) and what to ask: `scan.md`, `topics.md`, `policies.md`. |
 | `types/` | The page-type catalog + the meta-schema (`_template.md`) for minting new types. Each type file carries its own detection signals. |
 | `templates/` | Sources for every generated file: global instructions, working guidelines, per-repo instructions, the wiki schema, the machine page, the gitignore block, the pre-commit size guard. |
@@ -39,6 +39,8 @@ system. Any agent operating in this directory is bound by this contract.
 ## Running a flow
 
 - "Set me up" / first contact → `flows/setup.md`.
+- An existing working setup with no recorded baseline (wiki present,
+  `setup/` absent) → `flows/adopt.md` — record it first, change it never.
 - "Tune / improve / change my setup" → `flows/tune.md`.
 - "Audit / check my wiki" → `flows/audit.md`.
 - "Add a machine / repo / collaborator" → `flows/add.md`.

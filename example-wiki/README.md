@@ -10,12 +10,12 @@ What to notice:
 
 - **Composition**: core types (`project`, `entity`, `concept`, `synthesis`) +
   catalog picks (`dataset`, `experiment`, `manuscript`, `venue`, `service`,
-  `runbook`, `decision`) + one **minted** type (`interview-` — created with
+  `runbook`, `decision`, `machine`) + one **minted** type (`interview-` — created with
   `types/_template.md` because interview pages need sections no catalog type
   has: consent status, quote-approval state).
 - **Provenance tags** ending factual bullets: `— conv:DATE`, `— file:…`,
   `— verified:DATE`, `— exp:[[…]]`.
-- **A machine page with guardrails** (`entity-harbor`) — the operating-manual
+- **A machine page with guardrails** (`machine-harbor`) — the operating-manual
   pattern, including a gotcha filed the day it cost an hour.
 - **Draft discipline**: `venue-orchard-press` is `status: draft` with a
   `> [!needs-verification]` callout — uncertainty marked, not guessed away.

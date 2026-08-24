@@ -29,4 +29,4 @@
 
 ## Typical relations
 - Trained on `dataset-`, evidenced by `experiment-`, used by `project-`/
-  `service-`, runs on `entity-` machines.
+  `service-`, runs on `machine-` hosts.

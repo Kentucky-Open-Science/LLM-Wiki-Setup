@@ -3,7 +3,7 @@
 Enable when any machine is **shared** (other people's data and jobs; charged
 allocations) or holds **sensitive data** (PHI/PII, clinical, proprietary).
 This module exists because a shared cluster is where a confident agent does
-the most damage. The guardrails land in two places: the machine's `entity-`
+the most damage. The guardrails land in two places: the machine's `machine-`
 page (the agent re-reads them every time it touches the machine) and the
 global policy's device table (one-line reminders).
 
