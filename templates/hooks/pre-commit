@@ -1,0 +1,22 @@
+#!/bin/sh
+# Size guard: block any staged file larger than the limit. Bulk data never
+# reaches the remote. Cross-platform: git executes hooks with its bundled sh
+# on Windows (Git for Windows), macOS, and Linux — no other dependency.
+# Installed per-repo as .git/hooks/pre-commit (policy P2); source of truth
+# lives in <wiki>/config/. Limit is set at install time.
+LIMIT_MB={{SIZE_LIMIT_MB}}
+max=$((LIMIT_MB * 1024 * 1024))
+# POSIX sh, safe for any filename: the while runs in a subshell, so report
+# findings via output and test that, not a variable.
+found=$(git diff --cached --name-only --diff-filter=AM | while IFS= read -r f; do
+  sz=$(git cat-file -s ":$f" 2>/dev/null) || continue
+  if [ "$sz" -gt "$max" ]; then
+    printf 'BLOCKED: %s is %s MB (limit %s MB).\n' "$f" "$((sz / 1024 / 1024))" "$LIMIT_MB"
+  fi
+done)
+if [ -n "$found" ]; then
+  printf '%s\n' "$found" >&2
+  echo "  Data stays off the remote — move it or gitignore it." >&2
+  exit 1
+fi
+exit 0

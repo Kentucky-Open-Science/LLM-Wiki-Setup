@@ -1,0 +1,5 @@
+# The hub is never modified by use. The single piece of local state:
+.wiki-path
+
+__pycache__/
+.DS_Store
