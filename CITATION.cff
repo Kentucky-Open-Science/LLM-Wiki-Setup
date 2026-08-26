@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+title: LLM-Wiki-Setup
+message: >-
+  If you use this software, please cite it using this metadata.
+type: software
+authors:
+  - given-names: Evan
+    family-names: Damron
+    email: evandamron14@gmail.com
+    orcid: 'https://orcid.org/0009-0009-1104-3202'
+abstract: >-
+  Interview-driven setup kit: an AI agent builds a provenance-tagged
+  knowledge wiki and layered instruction stack for coding agents across
+  machines.
+keywords:
+  - llm agents
+  - knowledge management
+  - developer tools
